@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import signUp1 from "../../../../assets/images/signUp2.svg"
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../../../provider/AuthProvider";
 
 const Register = () => {
@@ -133,6 +133,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <Toaster></Toaster>
         </div>
     );
 };

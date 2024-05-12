@@ -1,6 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
+    const {user, logOutUser} = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOutUser()
+        .then(() => {
+            toast.success("Logout");
+        })
+        .catch(error => {
+            toast.error(error.message);
+        })
+    }
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/addBlogs">Add Blogs</NavLink></li>
@@ -31,23 +45,18 @@ const Navbar = () => {
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                {
+                                    user? <img alt="Tailwind CSS Navbar component" src={user?.photoURL} /> : ""
+                                }
                             </div>
                         </div>
-                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                            <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
-                        </ul>
                     </div>
-                    <a className="btn">Login</a>
+                    {
+                        user? <button onClick={handleLogout} className="btn">Logout</button> : <Link to="/login" className="btn">Login</Link>
+                    }
                 </div>
             </div>
+            <Toaster/>
         </div>
     );
 };
