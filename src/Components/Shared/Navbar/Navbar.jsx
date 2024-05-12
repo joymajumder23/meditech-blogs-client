@@ -9,7 +9,7 @@ const Navbar = () => {
         <li><NavLink to="/wishlist">Wishlist</NavLink></li>
     </>
     return (
-        <div>
+        <div className="container mx-auto">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
