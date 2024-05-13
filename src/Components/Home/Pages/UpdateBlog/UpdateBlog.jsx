@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import updateUI from "../../../../assets/images/updateUI.svg";
 import { Button, Form, Input, Select } from 'antd';
+import { AuthContext } from "../../../../provider/AuthProvider";
 const layout = {
     labelCol: {
         span: 8,
@@ -9,7 +11,11 @@ const layout = {
     },
 };
 
-/* eslint-disable no-template-curly-in-string */
+
+const UpdateBlog = () => {
+    const {user} = useContext(AuthContext);
+    const userEmail = user && user?.email;
+    /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
     required: '${label} is required!',
     types: {
@@ -20,9 +26,9 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 const onFinish = (values) => {
-    console.log(values.title);
+    const data = {values, userEmail};
+    console.log(data);
 };
-const UpdateBlog = () => {
     
     return (
         <div className="flex gap-4 container mx-auto mt-12 items-center">
@@ -50,6 +56,7 @@ const UpdateBlog = () => {
                     {/* <Form.Item
                     name={['user', 'email']}
                     label="Email"
+                    value={user && user?.email}
                     rules={[
                         {
                             type: 'email',
