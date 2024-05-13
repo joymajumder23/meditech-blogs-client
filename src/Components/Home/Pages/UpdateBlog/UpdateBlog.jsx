@@ -1,4 +1,4 @@
-import blogUI from "../../../../assets/images/blogUI.svg";
+import updateUI from "../../../../assets/images/updateUI.svg";
 import { Button, Form, Input, Select } from 'antd';
 const layout = {
     labelCol: {
@@ -22,12 +22,12 @@ const validateMessages = {
 const onFinish = (values) => {
     console.log(values.title);
 };
-const AddBlog = () => {
+const UpdateBlog = () => {
     
     return (
-        <div className="flex flex-row-reverse gap-4 items-center container mx-auto mt-12">
+        <div className="flex gap-4 container mx-auto mt-12 items-center">
             <div>
-                <img src={blogUI} alt="" />
+                <img src={updateUI} alt="" />
             </div>
             <div className="w-full border-dotted border-red-200 border-2 p-6">
                 <Form
@@ -109,4 +109,4 @@ const AddBlog = () => {
         </div>
     )
 };
-export default AddBlog;
+export default UpdateBlog;
