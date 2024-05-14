@@ -8,6 +8,7 @@ import Register from "../Components/Home/Pages/Register/Register";
 import Error from "../Components/Shared/Error/Error";
 import AddBlog from "../Components/Home/Pages/AddBlog/AddBlog";
 import UpdateBlog from "../Components/Home/Pages/UpdateBlog/UpdateBlog";
+import ViewDetails from "../Components/Home/Pages/ViewDetails/ViewDetails";
 
   const router = createBrowserRouter([
     {
@@ -34,6 +35,11 @@ import UpdateBlog from "../Components/Home/Pages/UpdateBlog/UpdateBlog";
         {
           path: "/updateBlog",
           element: <UpdateBlog></UpdateBlog>
+        },
+        {
+          path: "/viewDetails/:id",
+          element: <ViewDetails></ViewDetails>,
+          loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
         }
       ]
     },
