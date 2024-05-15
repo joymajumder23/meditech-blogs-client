@@ -7,11 +7,9 @@ import { AuthContext } from "../../../../provider/AuthProvider";
 const AddBlog = () => {
     const { user } = useContext(AuthContext);
     const userEmail = user&& user.email;
-    console.log(userEmail);
-
-
-
-    /* eslint-enable no-template-curly-in-string */
+    const userImage = user&& user.photoURL;
+    const userName = user&& user.displayName;
+    console.log(userEmail, userImage, userName);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +21,9 @@ const AddBlog = () => {
         const shortDes = form.shortDes.value;
         const longDes = form.longDes.value;
         // const email = form.email.value;
-        const newBlog = {email: userEmail, title, image, category, shortDes, longDes};
+        const newBlog = {email: userEmail, title, image, category, shortDes, longDes, userPhoto: userImage, userName: userName};
+        // newBlog.sort((a, b) => b.longDes.split(" ").length - a.longDes.split(" ").length);
+
         // console.log(newBlog);
         fetch('http://localhost:5000/blogs', {
             method: 'POST',
@@ -47,11 +47,11 @@ const AddBlog = () => {
             })
     };
     return (
-        <div className="flex flex-row-reverse gap-4 items-center container mx-auto mt-12">
+        <div className="flex flex-row-reverse gap-4 items-center container mx-auto mt-12 max-w-6xl">
             <div>
                 <img src={blogUI} alt="" />
             </div>
-            <div className="w-full border-dotted border-red-200 border-2 p-6">
+            <div className="lg:w-3/4 border-dotted border-red-200 border-2 p-6">
                 <form onSubmit={handleSubmit} className="card-body">
                     <div className="flex gap-4">
                         <div className="form-control w-full">

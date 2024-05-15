@@ -1,17 +1,14 @@
-import { GoChecklist } from "react-icons/go";
-import { TbListDetails } from "react-icons/tb";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
-
-const Blog = ({blog}) => {
+const BlogCard = ({blog}) => {
+    console.log(blog);
     const {user} = useContext(AuthContext);
-    const {_id, title, image, shortDes, category} = blog;
-
+    const {_id, title, category, shortDes, image} = blog;
+    const details = shortDes.slice(0,90);
+    console.log(details);
     const handleWishlist = () => {
         const wishList = {
             blogId: _id,
@@ -44,15 +41,15 @@ const Blog = ({blog}) => {
     }
     return (
         <div>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src={image || <Skeleton></Skeleton>} alt="" /></figure>
+            <div className="card card-side bg-base-100 shadow-xl">
+                <figure><img src={image} alt="" className="w-96 h-full" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title font-title font-medium">{title}</h2>
+                    <h2 className="card-title">{title}</h2>
                     <div className={`badge ${category === "Medical" && "bg-orange-600 bg-opacity-50"} ${category === "Technology" && "bg-blue-600 bg-opacity-50"}`}>{category}</div>
-                    <p className="font-details">{shortDes}</p>
-                    <div className="card-actions justify-between">
-                        <button onClick={handleWishlist} className="btn bg-green-400"><span className="text-xl"><GoChecklist></GoChecklist> </span>Wishlist</button>
-                        <Link to={`/viewDetails/${_id}`}><button className="btn bg-green-600 text-white font-details"><span className="text-xl font-details"><TbListDetails></TbListDetails></span>View Details</button></Link>
+                    <p>{details}</p>
+                    <div className="card-actions justify-end">
+                        <button onClick={handleWishlist} className="btn bg-green-400">Wishlist</button>
+                       <Link to={`/viewDetails/${_id}`}><button className="btn bg-green-400">View Details</button></Link>
                     </div>
                 </div>
             </div>
@@ -60,4 +57,4 @@ const Blog = ({blog}) => {
     );
 };
 
-export default Blog;
+export default BlogCard;

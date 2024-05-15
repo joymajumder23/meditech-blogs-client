@@ -9,6 +9,10 @@ import Error from "../Components/Shared/Error/Error";
 import AddBlog from "../Components/Home/Pages/AddBlog/AddBlog";
 import UpdateBlog from "../Components/Home/Pages/UpdateBlog/UpdateBlog";
 import ViewDetails from "../Components/Home/Pages/ViewDetails/ViewDetails";
+import AllBlogs from "../Components/Home/Pages/AllBlogs/AllBlogs";
+import Wishlists from "../Components/Home/Pages/Wishlists/Wishlists";
+import PrivateRoute from "./PrivateRoute";
+import Featured from "../Components/Home/Pages/Featured/Featured";
 
   const router = createBrowserRouter([
     {
@@ -30,16 +34,31 @@ import ViewDetails from "../Components/Home/Pages/ViewDetails/ViewDetails";
         },
         {
           path: "/addBlog",
-          element: <AddBlog></AddBlog>
+          element: <PrivateRoute><AddBlog></AddBlog></PrivateRoute>
         },
         {
-          path: "/updateBlog",
-          element: <UpdateBlog></UpdateBlog>
+          path: "/updateBlog/:id",
+          element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
         },
         {
           path: "/viewDetails/:id",
-          element: <ViewDetails></ViewDetails>,
+          element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+        },
+        {
+          path: "/allBlogs",
+          element: <AllBlogs></AllBlogs>,
+          loader: () => fetch('http://localhost:5000/blogs')
+        },
+        {
+          path: "/wishlist",
+          element: <PrivateRoute><Wishlists></Wishlists></PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+        },
+        {
+          path: "/featured",
+          element: <PrivateRoute><Featured></Featured></PrivateRoute>
         }
       ]
     },

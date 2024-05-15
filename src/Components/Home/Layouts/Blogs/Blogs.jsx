@@ -12,9 +12,9 @@ const Blogs = () => {
         })
     },[])
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto mt-24 max-w-6xl">
             <h1 className="text-title text-5xl font-bold text-center">Trending Blogs</h1>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-5 mt-12">
                 {
                     blogs.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
                 }

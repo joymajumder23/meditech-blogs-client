@@ -1,15 +1,17 @@
-import { useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../../provider/AuthProvider";
 
 const ViewDetails = () => {
+    const {user} = useContext(AuthContext);
 
     const blog = useLoaderData();
     console.log(blog);
 
-    const {image, title, shortDes, longDes, category} = blog;
+    const {_id, image, title, shortDes, longDes, category, email} = blog;
     return (
-        <div className="container mx-auto">
-            <h1>View Details</h1>
-            <div className="grid grid-cols-2 gap-5">
+        <div className="container mx-auto max-w-6xl mt-12">
+            <div className="grid md:grid-cols-2 gap-5">
 
                 {/* image and title and short description */}
                 <div>
@@ -20,7 +22,9 @@ const ViewDetails = () => {
                             <div className="badge badge-outline font-details">{category}</div>
                             <p className="font-details">{shortDes}</p>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">Buy Now</button>
+                               {
+                                user && user?.email === email?  <Link to={`/updateBlog/${_id}`}><button className="btn btn-primary">Update</button></Link> : ""
+                               }
                             </div>
                         </div>
                     </div>
