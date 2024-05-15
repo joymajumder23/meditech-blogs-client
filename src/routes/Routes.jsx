@@ -53,12 +53,12 @@ import Featured from "../Components/Home/Pages/Featured/Featured";
         },
         {
           path: "/wishlist",
-          element: <PrivateRoute><Wishlists></Wishlists></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+          element: <PrivateRoute><Wishlists></Wishlists></PrivateRoute>
         },
         {
           path: "/featured",
-          element: <PrivateRoute><Featured></Featured></PrivateRoute>
+          element: <Featured></Featured>,
+          loader: () => fetch('http://localhost:5000/blogs')
         }
       ]
     },

@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Wishlists = () => {
     const {user} = useContext(AuthContext);
-    const email = user && user?.email;
+    const email = user?.email;
     console.log(email);
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {

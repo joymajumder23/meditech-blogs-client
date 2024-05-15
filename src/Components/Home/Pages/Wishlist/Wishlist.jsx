@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Wishlist = ({blog, handleDelete}) => {
-    // console.log(blog);
+    console.log(blog);
     const {_id, blogId, title, category, shortDes, image} = blog;
     
     return (
