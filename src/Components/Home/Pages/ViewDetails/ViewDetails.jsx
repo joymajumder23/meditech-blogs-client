@@ -9,6 +9,14 @@ const ViewDetails = () => {
     console.log(blog);
 
     const {_id, image, title, shortDes, longDes, category, email} = blog;
+
+    // comments section
+    const handleComment = e => {
+        e.preventDefault();
+        const form = e.target;
+        const comments = form.comments.value;
+        console.log(comments);
+    }
     return (
         <div className="container mx-auto max-w-6xl mt-12">
             <div className="grid md:grid-cols-2 gap-5">
@@ -43,8 +51,8 @@ const ViewDetails = () => {
                     <div className="card bg-base-100 shadow-xl">
                         <div className="card-body">
                             <h1 className="text-xl font-title">Comments</h1>
-                            <form action="">
-                                <textarea placeholder="Comments here" className="textarea textarea-bordered textarea-lg w-full" ></textarea>
+                            <form onSubmit={handleComment} action="">
+                                <textarea placeholder="Comments here" className="textarea textarea-bordered textarea-lg w-full" name="comments" ></textarea>
                                 <br />
                                 <input className="btn" type="submit" value="Send" />
                             </form>

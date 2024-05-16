@@ -2,6 +2,8 @@ import Swal from "sweetalert2";
 import blogUI from "../../../../assets/images/blogUI.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
+import { fadeIn } from "../../../../variant";
+import {motion} from "framer-motion"
 
 
 const AddBlog = () => {
@@ -48,10 +50,10 @@ const AddBlog = () => {
     };
     return (
         <div className="flex flex-row-reverse gap-4 items-center container mx-auto mt-12 max-w-6xl">
-            <div>
+            <motion.div variants={fadeIn("left", 0.2)} initial="hidden" whileInView={"show"} viewport={{once: false, amount: 0.7}}>
                 <img src={blogUI} alt="" />
-            </div>
-            <div className="lg:w-3/4 border-dotted border-red-200 border-2 p-6">
+            </motion.div>
+            <motion.div variants={fadeIn("right", 0.2)} initial="hidden" whileInView={"show"} viewport={{once: false, amount: 0.7}} className="lg:w-3/4 border-dotted border-red-200 border-2 p-6">
                 <form onSubmit={handleSubmit} className="card-body">
                     <div className="flex gap-4">
                         <div className="form-control w-full">
@@ -103,7 +105,7 @@ const AddBlog = () => {
                         <button className="btn btn-primary">Add</button>
                     </div>
                 </form>
-            </div>
+            </motion.div>
         </div>
     )
 };

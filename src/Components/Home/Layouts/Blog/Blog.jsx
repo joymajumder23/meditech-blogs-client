@@ -43,16 +43,16 @@ const Blog = ({blog}) => {
 
     }
     return (
-        <div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 md:gap-5 hover:shadow-2xl hover:scale-[1.05] transition-all">
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                <figure><img src={image || <Skeleton></Skeleton>} alt="" /></figure>
+                <figure><img src={image || <Skeleton/>} alt="" /></figure>
                 <div className="card-body">
                     <h2 className="card-title font-title font-medium">{title}</h2>
-                    <div className={`badge ${category === "Medical" && "bg-orange-600 bg-opacity-50"} ${category === "Technology" && "bg-blue-600 bg-opacity-50"}`}>{category}</div>
-                    <p className="font-details">{shortDes}</p>
+                    <div className={`badge ${category === "Medical" && "bg-orange-600 bg-opacity-50"} ${category === "Technology" && "bg-blue-600 bg-opacity-50"}`}>{category || <Skeleton/>}</div>
+                    <p className="font-details">{shortDes || <Skeleton/>}</p>
                     <div className="card-actions justify-between">
                         <button onClick={handleWishlist} className="btn bg-green-400"><span className="text-xl"><GoChecklist></GoChecklist> </span>Wishlist</button>
-                        <Link to={`/viewDetails/${_id}`}><button className="btn bg-green-600 text-white font-details"><span className="text-xl font-details"><TbListDetails></TbListDetails></span>View Details</button></Link>
+                        <Link to={`/viewDetails/${_id}`}><button className="btn bg-green-600 text-white font-details outline-dashed outline-green-400"><span className="text-xl font-details"><TbListDetails></TbListDetails></span>View Details</button></Link>
                     </div>
                 </div>
             </div>
