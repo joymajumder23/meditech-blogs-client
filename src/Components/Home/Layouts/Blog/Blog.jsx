@@ -51,7 +51,9 @@ const Blog = ({blog}) => {
                     <div className={`badge ${category === "Medical" && "bg-orange-600 bg-opacity-50"} ${category === "Technology" && "bg-blue-600 bg-opacity-50"}`}>{category || <Skeleton/>}</div>
                     <p className="font-details">{shortDes || <Skeleton/>}</p>
                     <div className="card-actions justify-between">
-                        <button onClick={handleWishlist} className="btn bg-green-400"><span className="text-xl"><GoChecklist></GoChecklist> </span>Wishlist</button>
+                        {
+                            user && <button onClick={handleWishlist} className="btn bg-green-400"><span className="text-xl"><GoChecklist></GoChecklist> </span>Wishlist</button>
+                        }
                         <Link to={`/viewDetails/${_id}`}><button className="btn bg-green-600 text-white font-details outline-dashed outline-green-400"><span className="text-xl font-details"><TbListDetails></TbListDetails></span>View Details</button></Link>
                     </div>
                 </div>
