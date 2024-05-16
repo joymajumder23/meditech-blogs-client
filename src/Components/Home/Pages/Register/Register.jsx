@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
@@ -60,6 +61,9 @@ const Register = () => {
         };
     return (
         <div>
+            <Helmet>
+                <title>Home | Register</title>
+            </Helmet>
              <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse gap-10">
                     <div className="text-center lg:text-left">

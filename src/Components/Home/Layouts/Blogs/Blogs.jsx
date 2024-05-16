@@ -11,7 +11,7 @@ const Blogs = () => {
         fetch('http://localhost:5000/blogs')
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             setBlogs(data);
         })
     },[])
@@ -21,7 +21,7 @@ const Blogs = () => {
             <h1 className="text-title text-5xl font-bold text-center">Trending Blogs</h1>
             </motion.div>
             
-            <motion.div variants={fadeIn("right", 0.2)} initial="hidden" whileInView={"show"} viewport={{once: false, amount: 0.7}} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-12">
+            <motion.div variants={fadeIn("up", 0.2)} initial="hidden" whileInView={"show"} viewport={{once: false, amount: 0.7}} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-12">
                 {
                     blogs.slice(0, 6).map(blog => <Blog key={blog._id} blog={blog}></Blog>)
                 }

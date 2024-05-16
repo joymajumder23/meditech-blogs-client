@@ -3,22 +3,27 @@ import { AuthContext } from "../../../../provider/AuthProvider";
 import Wishlist from "../Wishlist/Wishlist";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../../../variant";
+import { FaArrowRight } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Wishlists = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const email = user?.email;
-    console.log(email);
+    // console.log(email);
     const [blogs, setBlogs] = useState([]);
+    const [dataLength, setDataLength] = useState(4);
     useEffect(() => {
         // fetch(`http://localhost:5000/wishlist/${email}`, {credentials: 'include'})
         // .then(res => res.json())
         // .then(data => {
         //     setBlogs(data)
         // })
-        axios.get(`http://localhost:5000/wishlist/${email}`, {withCredentials: true})
-        .then(res => setBlogs(res.data))
-    },[]);
-    console.log(blogs);
+        axios.get(`http://localhost:5000/wishlist/${email}`, { withCredentials: true })
+            .then(res => setBlogs(res.data))
+    }, []);
+    // console.log(blogs);
 
     // delete
     const handleDelete = id => {
@@ -55,19 +60,27 @@ const Wishlists = () => {
 
     }
 
-   
+
 
     return (
         <div className="container mx-auto max-w-6xl">
-             <button className="btn">
+            <Helmet>
+                <title>Home | Wishlists</title>
+            </Helmet>
+            <button className="btn">
                 Whislist
                 <div className="badge">{blogs.length}</div>
             </button>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <motion.div
+                variants={fadeIn("up", 0.5)} initial="hidden" whileInView={"show"} viewport={{ once: false, amount: 0.5 }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                 {
-                    blogs.map(blog => <Wishlist key={blog._id} blog={blog} handleDelete={handleDelete}></Wishlist>)
+                    blogs.slice(0, dataLength).map(blog => <Wishlist key={blog._id} blog={blog} handleDelete={handleDelete}></Wishlist>)
                 }
-            </div>
+            </motion.div>
+            <motion.div variants={fadeIn("left", 0.2)} initial="hidden" whileInView={"show"} viewport={{ once: false, amount: 0.7 }}>
+                <button onClick={() => setDataLength(blogs.length)} className={`btn bg-green-500 ${dataLength === blogs.length && 'hidden'}`} ><FaArrowRight></FaArrowRight> Show All</button>
+            </motion.div>
         </div>
     );
 };

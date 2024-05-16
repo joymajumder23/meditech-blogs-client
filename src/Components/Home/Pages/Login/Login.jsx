@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const {loginUser, googleLogin, githubLogin} = useContext(AuthContext);
@@ -64,6 +65,9 @@ const Login = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Home | Login</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row gap-4">
                     <div className="text-center lg:text-left">

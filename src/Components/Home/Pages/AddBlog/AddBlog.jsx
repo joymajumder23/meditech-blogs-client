@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../../provider/AuthProvider";
 import { fadeIn } from "../../../../variant";
 import {motion} from "framer-motion"
+import { Helmet } from "react-helmet-async";
 
 
 const AddBlog = () => {
@@ -49,20 +50,23 @@ const AddBlog = () => {
             })
     };
     return (
-        <div className="flex flex-row-reverse gap-4 items-center container mx-auto mt-12 max-w-6xl">
+        <div className="lg:flex lg:flex-row-reverse gap-4 lg:items-center container mx-auto mt-12 max-w-6xl">
+            <Helmet>
+                <title>Home | Add Blog</title>
+            </Helmet>
             <motion.div variants={fadeIn("left", 0.2)} initial="hidden" whileInView={"show"} viewport={{once: false, amount: 0.7}}>
                 <img src={blogUI} alt="" />
             </motion.div>
             <motion.div variants={fadeIn("right", 0.2)} initial="hidden" whileInView={"show"} viewport={{once: false, amount: 0.7}} className="lg:w-3/4 border-dotted border-red-200 border-2 p-6">
                 <form onSubmit={handleSubmit} className="card-body">
-                    <div className="flex gap-4">
+                    <div className="md:flex gap-4">
                         <div className="form-control w-full">
                             <label className="label">
                                 <span className="label-text">Title</span>
                             </label>
                             <input type="text" placeholder="enter your title" className="input input-bordered" name="title" required />
                         </div>
-                        <div className="form-control w-full">
+                        <div className="form-control lg:w-full">
                             <label className="label">
                                 <span className="label-text">Category</span>
                             </label>

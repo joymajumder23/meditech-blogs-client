@@ -3,19 +3,23 @@ import BlogCard from "../BlogCard/BlogCard";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../../variant";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const AllBlogs = () => {
     const blogs = useLoaderData();
-    console.log(blogs);
+    // console.log(blogs);
     const [dataLength, setDataLength] = useState(4);
     return (
         <div className="container mx-auto max-w-6xl mt-12">
+            <Helmet>
+                <title>Home | All Blogs</title>
+            </Helmet>
             <button className="btn">
                 Blogs
                 <div className="badge">{blogs.length}</div>
             </button>
             <motion.div
-            variants={fadeIn("up", 0.2)} initial="hidden" whileInView={"show"} viewport={{once: false, amount: 0.7}} className="grid grid-cols-2 gap-4 mt-2">
+            variants={fadeIn("up", 0.2)} initial="hidden" whileInView={"show"} viewport={{once: false, amount: 0.7}} className="md:grid md:grid-cols-2 gap-4 md:mt-2">
                 {
                     blogs.slice(0, dataLength).map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
                 }
