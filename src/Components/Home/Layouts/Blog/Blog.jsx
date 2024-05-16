@@ -22,7 +22,7 @@ const Blog = ({blog}) => {
             email: user?.email
         };
 
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://blog-web-server-omega.vercel.app/wishlist', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

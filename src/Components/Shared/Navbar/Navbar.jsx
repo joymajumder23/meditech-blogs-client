@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import logo from "../../../assets/images/logo.png";
 
 const Navbar = () => {
     const {user, logOutUser} = useContext(AuthContext);
@@ -21,9 +22,6 @@ const Navbar = () => {
         <li><NavLink to="/allBlogs">All Blogs</NavLink></li>
         <li><NavLink to="/featured">Featured Blogs</NavLink></li>
         <li><NavLink to="/wishlist">Wishlist</NavLink></li>
-        {
-            user? <li><NavLink to="/updateBlog">Update Blog</NavLink></li> : ""
-        }
     </>
     return (
         <div className="container mx-auto">
@@ -37,7 +35,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <Link to="/"><a className="btn btn-ghost text-3xl font-details">MediTech</a></Link>
+                    <Link to="/"><a className="btn btn-ghost text-3xl font-details flex items-center"><img className="w-4 md:w-12" src={logo} alt="" />MediTech</a></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 font-details">

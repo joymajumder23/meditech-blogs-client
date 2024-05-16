@@ -45,7 +45,7 @@ const Register = () => {
        // create user
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 
                 // update user
                 updateUser(name, image)
@@ -55,7 +55,7 @@ const Register = () => {
                 })
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
                 setError(error.message);
             })
         };

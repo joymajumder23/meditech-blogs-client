@@ -43,7 +43,7 @@ const AuthProvider = ({children}) => {
     // observer
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser);
+            // console.log(currentUser);
             const userEmail = currentUser?.email || user?.email;
             const loggedUser = {email: userEmail};
             setUser(currentUser);
@@ -51,15 +51,15 @@ const AuthProvider = ({children}) => {
 
             if(currentUser){
                 
-                axios.post('http://localhost:5000/jwt', loggedUser, {withCredentials: true})
+                axios.post('https://blog-web-server-omega.vercel.app/jwt', loggedUser, {withCredentials: true})
                 .then(res => {
-                    console.log('Token', res.data);
+                    // console.log('Token', res.data);
                 })
             }
             else{
-                axios.post('http://localhost:5000/logout', loggedUser, {withCredentials: true})
+                axios.post('https://blog-web-server-omega.vercel.app/logout', loggedUser, {withCredentials: true})
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                 })
             }
         });

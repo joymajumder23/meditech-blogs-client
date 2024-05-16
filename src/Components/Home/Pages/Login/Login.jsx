@@ -18,19 +18,19 @@ const Login = () => {
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         // login user
         loginUser(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 toast.success('Successfully Login');
                 if(result.user){
                     navigate(location?.state? location.state : "/");
                 }
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
                 setError(error.message);
             })
 
@@ -46,9 +46,7 @@ const Login = () => {
             }
             
         })
-        .catch(error => {
-            console.log(error.message);
-        })
+       
     }
 
     const handleGithub = () => {
@@ -59,9 +57,7 @@ const Login = () => {
                 navigate(location?.state? location.state : "/");
             }
         })
-        .catch(error => {
-            console.log(error.message);
-        })
+       
     }
     return (
         <div>

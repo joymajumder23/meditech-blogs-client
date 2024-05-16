@@ -12,11 +12,11 @@ const AddBlog = () => {
     const userEmail = user&& user.email;
     const userImage = user&& user.photoURL;
     const userName = user&& user.displayName;
-    console.log(userEmail, userImage, userName);
+    // console.log(userEmail, userImage, userName);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
+        // console.log(e);
         const form = e.target;
         const title = form.title.value;
         const image = form.image.value;
@@ -28,7 +28,7 @@ const AddBlog = () => {
         // newBlog.sort((a, b) => b.longDes.split(" ").length - a.longDes.split(" ").length);
 
         // console.log(newBlog);
-        fetch('http://localhost:5000/blogs', {
+        fetch('https://blog-web-server-omega.vercel.app/blogs', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

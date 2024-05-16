@@ -5,13 +5,13 @@ import Swal from "sweetalert2";
 
 const UpdateBlog = () => {
     const blogsData = useLoaderData();
-    console.log(blogsData);
+    // console.log(blogsData);
     const {_id, title, image, category, shortDes, longDes} = blogsData;
 
     
     const handleUpdate = e => {
         e.preventDefault();
-        console.log(e);
+        // console.log(e);
         const form = e.target;
         const title = form.title.value;
         const image = form.image.value;
@@ -21,7 +21,7 @@ const UpdateBlog = () => {
         // const email = form.email.value;
         const newBlog = {title, image, category, shortDes, longDes};
         // console.log(newBlog);
-        fetch(`http://localhost:5000/blogs/${_id}`, {
+        fetch(`https://blog-web-server-omega.vercel.app/blogs/${_id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json"

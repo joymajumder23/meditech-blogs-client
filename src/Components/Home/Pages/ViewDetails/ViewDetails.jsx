@@ -16,7 +16,7 @@ const ViewDetails = () => {
     const {_id, image, title, shortDes, longDes, category, email} = blog;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/comments/${_id}`)
+        axios.get(`https://blog-web-server-omega.vercel.app/comments/${_id}`)
         .then(res => setCommentUser(res.data))
     },[_id])
     // console.log(commentUser);
@@ -27,12 +27,12 @@ const ViewDetails = () => {
             return toast.error('Can not comment on own blog');
         const form = e.target;
         const comments = form.comments.value;
-        console.log(comments);
+        // console.log(comments);
         const commentData = {userName: user?.displayName,
             userImage: user?.photoURL, blogId: _id, comments};
-            console.log(commentData);
+            // console.log(commentData);
 
-        axios.post('http://localhost:5000/comments', commentData)
+        axios.post('https://blog-web-server-omega.vercel.app/comments', commentData)
         .then(res => {
             if (res.data.insertedId) {
                 toast.success("Send")

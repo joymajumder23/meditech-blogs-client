@@ -4,11 +4,11 @@ import { AuthContext } from "../../../../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const BlogCard = ({blog}) => {
-    console.log(blog);
+    // console.log(blog);
     const {user} = useContext(AuthContext);
     const {_id, title, category, shortDes, image} = blog;
     const details = shortDes.slice(0,90);
-    console.log(details);
+    // console.log(details);
     const handleWishlist = () => {
         const wishList = {
             blogId: _id,
@@ -19,7 +19,7 @@ const BlogCard = ({blog}) => {
             email: user?.email
         };
 
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://blog-web-server-omega.vercel.app/wishlist', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -48,7 +48,9 @@ const BlogCard = ({blog}) => {
                     <div className={`badge ${category === "Medical" && "bg-orange-600 bg-opacity-50"} ${category === "Technology" && "bg-blue-600 bg-opacity-50"}`}>{category}</div>
                     <p>{details}</p>
                     <div className="card-actions justify-end">
-                        <button onClick={handleWishlist} className="btn bg-green-400">Wishlist</button>
+                        {
+                            user && <button onClick={handleWishlist} className="btn bg-green-400">Wishlist</button>
+                        }
                        <Link to={`/viewDetails/${_id}`}><button className="btn bg-green-400">View Details</button></Link>
                     </div>
                 </div>

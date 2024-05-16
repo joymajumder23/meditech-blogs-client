@@ -39,17 +39,17 @@ import Featured from "../Components/Home/Pages/Featured/Featured";
         {
           path: "/updateBlog/:id",
           element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+          loader: ({params}) => fetch(`https://blog-web-server-omega.vercel.app/blogs/${params.id}`)
         },
         {
           path: "/viewDetails/:id",
           element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+          loader: ({params}) => fetch(`https://blog-web-server-omega.vercel.app/blogs/${params.id}`)
         },
         {
           path: "/allBlogs",
           element: <AllBlogs></AllBlogs>,
-          loader: () => fetch('http://localhost:5000/blogs')
+          loader: () => fetch('https://blog-web-server-omega.vercel.app/blogs')
         },
         {
           path: "/wishlist",
@@ -58,7 +58,7 @@ import Featured from "../Components/Home/Pages/Featured/Featured";
         {
           path: "/featured",
           element: <Featured></Featured>,
-          loader: () => fetch('http://localhost:5000/blogs')
+          loader: () => fetch('https://blog-web-server-omega.vercel.app/blogs')
         }
       ]
     },

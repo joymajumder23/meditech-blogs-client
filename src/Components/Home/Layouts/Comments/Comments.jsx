@@ -1,5 +1,5 @@
 const Comments = ({comment}) => {
-    console.log(comment);
+    // console.log(comment);
     return (
         <div>
             <div className="chat chat-start">

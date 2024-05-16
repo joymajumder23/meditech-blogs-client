@@ -15,12 +15,12 @@ const Wishlists = () => {
     const [blogs, setBlogs] = useState([]);
     const [dataLength, setDataLength] = useState(4);
     useEffect(() => {
-        // fetch(`http://localhost:5000/wishlist/${email}`, {credentials: 'include'})
+        // fetch(`https://blog-web-server-omega.vercel.app/wishlist/${email}`, {credentials: 'include'})
         // .then(res => res.json())
         // .then(data => {
         //     setBlogs(data)
         // })
-        axios.get(`http://localhost:5000/wishlist/${email}`, { withCredentials: true })
+        axios.get(`https://blog-web-server-omega.vercel.app/wishlist/${email}`, { withCredentials: true })
             .then(res => setBlogs(res.data))
     }, []);
     // console.log(blogs);
@@ -38,12 +38,12 @@ const Wishlists = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/wishlist/${id}`, {
+                fetch(`https://blog-web-server-omega.vercel.app/wishlist/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
 
                         if (data.deletedCount > 0) {
                             Swal.fire({
