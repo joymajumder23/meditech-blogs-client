@@ -1,6 +1,8 @@
 # MediTech Blogs Project
 <p><a href="https://blog-web-client-76705.web.app/">Live Link</a></p>
-**We used the some essintial packages:**
+<p><a href="https://github.com/joymajumder23/meditech-blogs-server">Server Side</a></p>
+
+**We used the some essintial packages and technologies:**
  1. lottie - react.
  2. React Icons - used for different icons.
  3. React Helmet - used for dynamic title.
