@@ -2,7 +2,7 @@
 <p><a href="https://blog-web-client-76705.web.app/">Live Link</a></p>
 <p><a href="https://github.com/joymajumder23/meditech-blogs-server">Server Side</a></p>
 
-**Features**
+**Features:**
 This is about a travel and tour. With this, a user will get the details and all kinds of information about different tour spots according to the country. 
 - Here the work of the admin panel has been done. 
 - This will open an admin user account and login. 
