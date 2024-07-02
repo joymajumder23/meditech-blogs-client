@@ -1,4 +1,5 @@
 # MediTech Blogs Project
+<p><a href="https://blog-web-client-76705.web.app/">Live Link</a></p>
 **We used the some essintial packages:**
  1. lottie - react.
  2. React Icons - used for different icons.
