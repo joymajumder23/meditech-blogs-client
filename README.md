@@ -2,6 +2,12 @@
 <p><a href="https://blog-web-client-76705.web.app/">Live Link</a></p>
 <p><a href="https://github.com/joymajumder23/meditech-blogs-server">Server Side</a></p>
 
+**Features**
+This is about a travel and tour. With this, a user will get the details and all kinds of information about different tour spots according to the country. 
+- Here the work of the admin panel has been done. 
+- This will open an admin user account and login. 
+- Then he can add new tour spots if he wants.
+
 **We used the some essintial packages and technologies:**
  1. lottie - react.
  2. React Icons - used for different icons.
@@ -21,5 +27,14 @@
  16. Google Font - used for stylish fonts.
  17. Firebase - used for authentication.
 
+**How to run**
+- Copy the URL of the Git project.
+- Go to the local folder and clone Git with the URL.
+- Go to command prompt and open the code.
+- npm install in command prompt.
+- Git will then copy and clone the server side URL.
+- npm install mongodb, express, cors, dotenv, nodemon in command prompt.
+- nodemon will run with index.js.
+- Then go to Chole, go to the client side and npm run dev.
 
 
